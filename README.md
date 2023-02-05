@@ -1,4 +1,4 @@
-# isanghaessi-snoop_kakao
+# snoop_kakao
 
 ## 프로젝트 목표
 - 인프라를 단단히 만들자.
