@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: ${NGINX_IMAGE}
+    build:
+      dockerfile: Dockerfile.${PROFILE}
+      context: ./nginx
+    depends_on:
+      - server
+      - client
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
+      - SERVER_PORT=${SERVER_PORT}
+      - CLIENT_PORT=${CLIENT_PORT}
+    volumes:
+      - ./nginx:/nginx:r
+      - dist:/dist:r
+  server:
+    image: ${SERVER_IMAGE}
+    build:
+      dockerfile: Dockerfile.${PROFILE}
+      context: ./server
+    expose:
+      - ${SERVER_PORT}
+    environment:
+      - PORT=${SERVER_PORT}
+    volumes:
+      - ./server:/server:wr
+  client:
+    image: ${CLIENT_IMAGE}
+    build:
+      dockerfile: Dockerfile.${PROFILE}
+      context: ./client
+    expose:
+      - ${CLIENT_PORT}
+    environment:
+      - PROTOCOL=${PROTOCOL}
+      - DOMAIN=${DOMAIN}
+      - PORT=${CLIENT_PORT}
+      - NGINX_PORT=${PORT}
+    volumes:
+      - ./client:/client:wr
+      - dist:/dist:w
+
+volumes:
+  dist:

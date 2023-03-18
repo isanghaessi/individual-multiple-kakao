@@ -1,0 +1,19 @@
+upstream server-upstream {
+  server server:${SERVER_PORT};
+}
+
+upstream client-upstream {
+  server client:${CLIENT_PORT};
+}
+
+server {
+  listen ${PORT};
+
+  location /api {
+    proxy_pass http://server-upstream;
+  }
+
+  location / {
+    proxy_pass http://client-upstream;
+  }
+}

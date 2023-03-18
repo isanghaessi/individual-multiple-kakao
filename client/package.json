@@ -1,0 +1,21 @@
+{
+  "name": "individual-multiple-kakao",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite -m dev",
+    "build": "vite build -m real"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "eslint": "^8.36.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "prettier": "^2.8.4",
+    "vite": "^4.1.4"
+  }
+}

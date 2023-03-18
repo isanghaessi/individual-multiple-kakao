@@ -1,0 +1,5 @@
+FROM gradle:latest
+
+WORKDIR /server
+
+ENTRYPOINT ./gradlew build -Dspring.profiles.active=real

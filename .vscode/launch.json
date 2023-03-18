@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-IndividualMultipleKakaoApplication<individual-multiple-kakao>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.isanghaessi.individualmultiplekakao.IndividualMultipleKakaoApplication",
+      "projectName": "individual-multiple-kakao",
+      "args": "--spring.config.activate.on-profile=local",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
