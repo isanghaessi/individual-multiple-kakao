@@ -19,7 +19,7 @@
 - MySQL
 - Docker
 
-## 정리 블로그
-https://blog.naver.com/isanghae_ssi
+## 정리
+[네이버 블로그](https://blog.naver.com/isanghae_ssi)
 
 ---
