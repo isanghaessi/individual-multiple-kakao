@@ -2,4 +2,4 @@ FROM gradle:latest
 
 WORKDIR /server
 
-ENTRYPOINT ./gradlew bootRun --args='--spring.profiles.active=dev'
+ENTRYPOINT gradle bootRun --args='--spring.profiles.active=dev'
