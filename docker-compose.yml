@@ -23,12 +23,11 @@ services:
       dockerfile: Dockerfile.${PROFILE}
       context: ./was
     ports:
-      - ${WAS_DEBUG_PORT}:${WAS_DEBUG_PORT}
+      - 5050:5050
     expose:
       - ${WAS_PORT}
     environment:
       - PORT=${WAS_PORT}
-      - DEBUG_PORT=${WAS_DEBUG_PORT}
       - DB_DRIVER_CLASS_NAME=${DB_DRIVER_CLASS_NAME}
       - DB_URL=${DB_URL}
       - DB_USERNAME=${DB_USERNAME}
