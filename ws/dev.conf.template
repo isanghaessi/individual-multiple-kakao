@@ -1,5 +1,5 @@
-upstream server-upstream {
-  server server:${SERVER_PORT};
+upstream was-upstream {
+  server was:${WAS_PORT};
 }
 
 upstream client-upstream {
@@ -7,6 +7,7 @@ upstream client-upstream {
 }
 
 server {
+  server_name ${DOMAIN};
   listen ${PORT};
 
   location / {
@@ -18,6 +19,6 @@ server {
   }
 
   location /api {
-    proxy_pass http://server-upstream;
+    proxy_pass http://was-upstream;
   }
 }

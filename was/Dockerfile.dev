@@ -1,0 +1,8 @@
+FROM gradle:latest
+
+WORKDIR /was
+
+ENTRYPOINT  gradle build --continuous & \
+            gradle bootRun --args='--spring.profiles.active=dev' \
+              -Pdev \
+              -PjvmArgs="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=0.0.0.0:${WAS_DEBUG_PORT}"

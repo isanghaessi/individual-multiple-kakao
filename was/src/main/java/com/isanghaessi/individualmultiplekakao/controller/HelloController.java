@@ -1,18 +1,22 @@
 package com.isanghaessi.individualmultiplekakao.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.isanghaessi.individualmultiplekakao.service.HelloService;
+
 @RestController
 @RequestMapping("/api")
 public class HelloController {
-	@Value("${spring.config.activate.on-profile}")
-	String activeProfile;
+  private final HelloService helloService;
+
+  public HelloController(HelloService helloService) {
+    this.helloService = helloService;
+  }
 
 	@GetMapping("hello")
 	public String hello() {
-		return String.format("hello-spring [%s]", activeProfile);
+		return helloService.hello();
 	}
 }

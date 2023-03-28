@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <div>hello-vue [{{ profile }}]</div>
+    <div>hello-vue -&gt; [{{ profile }}]</div>
     <br />
     <button @click="callHelloApi">hello</button>
     <div>{{ result }}</div>

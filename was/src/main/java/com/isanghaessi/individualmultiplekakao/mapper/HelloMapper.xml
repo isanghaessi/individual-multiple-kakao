@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.isanghaessi.individualmultiplekakao.mapper.HelloMapper">
+  <select id="selectOne" resultType="boolean">
+    /* HelloMapper.selectOne */
+    SELECT 1
+  </select>
+</mapper>

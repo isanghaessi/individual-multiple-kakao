@@ -1,32 +1,40 @@
 services:
-  nginx:
-    image: ${NGINX_IMAGE}
+  ws:
+    image: ${WS_IMAGE}
     build:
       dockerfile: Dockerfile.${PROFILE}
-      context: ./nginx
+      context: ./ws
     depends_on:
-      - server
+      - was
       - client
     ports:
-      - ${PORT}:${PORT}
+      - ${WS_PORT}:${WS_PORT}
     environment:
-      - PORT=${PORT}
-      - SERVER_PORT=${SERVER_PORT}
+      - DOMAIN=${WS_DOMAIN}
+      - PORT=${WS_PORT}
+      - WAS_PORT=${WAS_PORT}
       - CLIENT_PORT=${CLIENT_PORT}
     volumes:
-      - ./nginx:/nginx:r
-      - dist:/dist:r
-  server:
-    image: ${SERVER_IMAGE}
+      - ./ws:/ws
+      - dist:/dist
+  was:
+    image: ${WAS_IMAGE}
     build:
       dockerfile: Dockerfile.${PROFILE}
-      context: ./server
+      context: ./was
+    ports:
+      - ${WAS_DEBUG_PORT}:${WAS_DEBUG_PORT}
     expose:
-      - ${SERVER_PORT}
+      - ${WAS_PORT}
     environment:
-      - PORT=${SERVER_PORT}
+      - PORT=${WAS_PORT}
+      - DEBUG_PORT=${WAS_DEBUG_PORT}
+      - DB_DRIVER_CLASS_NAME=${DB_DRIVER_CLASS_NAME}
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./server:/server:wr
+      - ./was:/was
   client:
     image: ${CLIENT_IMAGE}
     build:
@@ -35,12 +43,12 @@ services:
     expose:
       - ${CLIENT_PORT}
     environment:
-      - PROTOCOL=${PROTOCOL}
-      - DOMAIN=${DOMAIN}
       - PORT=${CLIENT_PORT}
-      - NGINX_PORT=${PORT}
+      - WS_PROTOCOL=${WS_PROTOCOL}
+      - WS_DOMAIN=${WS_DOMAIN}
+      - WS_PORT=${WS_PORT}
     volumes:
-      - ./client:/client:wr
+      - ./client:/client
       - dist:/dist:w
 
 volumes:

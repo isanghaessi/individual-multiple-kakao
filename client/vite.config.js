@@ -9,7 +9,7 @@ export default defineConfig(() => {
       process: {
         env: {
           ...process.env,
-          API_ORIGIN: `${process.env.PROTOCOL}${process.env.DOMAIN}:${process.env.NGINX_PORT}`,
+          API_ORIGIN: `${process.env.WS_PROTOCOL}${process.env.WS_DOMAIN}:${process.env.WS_PORT}`,
         },
       },
     },

@@ -1,5 +1,0 @@
-FROM nginx:alpine
-
-WORKDIR /
-
-ENTRYPOINT envsubst < /nginx/real.conf.template > /etc/nginx/conf.d/default.conf && nginx
