@@ -48,7 +48,7 @@ services:
       - WS_PORT=${WS_PORT}
     volumes:
       - ./client:/client
-      - dist:/dist:w
+      - dist:/dist
 
 volumes:
   dist:

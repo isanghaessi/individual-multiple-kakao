@@ -7,6 +7,9 @@ spring:
   config:
     activate:
       on-profile: dev
+  devtools:
+    restart:
+      enabled: true
   datasource:
     driver-class-name: ${DB_DRIVER_CLASS_NAME}
     url: ${DB_URL}

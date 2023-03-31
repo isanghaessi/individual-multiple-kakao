@@ -14,15 +14,12 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
-
+  runtimeOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
 	implementation("com.mysql:mysql-connector-j")
-
 	implementation("org.projectlombok:lombok")
-
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.projectlombok:lombok")
-
 	annotationProcessor("org.projectlombok:lombok")
 }
 
@@ -41,13 +38,8 @@ tasks.withType<Test> {
 
 tasks.bootRun {
   doFirst {
-    if (project.hasProperty("dev")) {
-      println("dev")
-      classpath += project.sourceSets["main"].runtimeClasspath
-
-      if (project.hasProperty("jvmArgs")) {
-        jvmArgs = (project.property("jvmArgs") as String).split("\\s+".toRegex())
-      }
+    if (project.hasProperty("jvmArgs")) {
+      jvmArgs = (project.property("jvmArgs") as String).split("\\s+".toRegex())
     }
-  }
+  } 
 }
